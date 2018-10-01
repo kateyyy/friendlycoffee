@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block head_title %}{{ post.title }} | {{ block.super }}{% endblock head_title %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+  <!-- ##### Blog Content Area Start ##### -->
+  <section class="blog-content-area section-padding-0-100">
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- Blog Posts Area -->
+        <div class="col-12 col-lg-8">
+          <div class="blog-posts-area">
+
+            <!-- Post Details Area -->
+            <div class="single-post-details-area">
+              <div class="post-thumbnail mb-30">
+                <img src="{{ post.banner_photo.url }}" alt="">
+              </div>
+              <div class="post-content">
+                <p class="post-date">{{ post.date_created }}</p>
+
+                
+                {% if user.is_authenticated %}
+                  <a href="{% url 'coffee:post-edit' post.slug %}" class="post-date">Modify post</a>
+                {% endif %}
+                <h4 class="post-title">{{ post.title }}<small> {{ post.subtitle }}</small></h4>
+                <div class="post-meta">
+                    <a href="#"><span>by</span> {{ user.username }}</a>
+                </div>
+                <p>{{ post.body }}</p>
+              </div>
+            </div>
+
+            <!-- Comment Area Start -->
+            <div class="comment_area clearfix">
+              <ol>
+                {% for comment in comment %}
+                  <li class="single_comment_area">
+                    <div class="comment-wrapper d-flex">
+                      <!-- Comment Meta -->
+                      
+                      <div class="comment-author">
+                        <img src="img/blog-img/15.jpg" alt="">
+                      </div>
+                    
+                      <!-- Comment Content -->
+                      <div class="comment-content">
+                        <span class="comment-date">{{ comment.date_created }}</span>
+                        <h5>{{ user.username }}</h5>
+                        <p>{{ comment.text }}</p>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </li>
+              </ol>
+            </div>
+
+            <!-- Leave A Comment -->
+            <div class="leave-comment-area clearfix">
+              <div class="comment-form">
+                <h4 class="headline">Leave A Comment</h4>
+
+                <!-- Comment Form -->
+                <form method="post" id="form" action="" enctype="multipart/form-data" class="infotabs accfrm">
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col-12 col-md-6">
+                      <div class="form-group">
+                          {{ form.text }}
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <a href="{% url 'coffee:comment' post.slug %}" type="submit" class="btn foode-btn">Post Comment</a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog Sidebar Area -->
+        <div class="col-12 col-sm-9 col-md-6 col-lg-4">
+          <div class="post-sidebar-area">
+
+            <!-- ##### Single Widget Area ##### -->
+            <div class="single-widget-area">
+              <!-- Title -->
+              <div class="widget-title">
+                  <h6>Latest Posts</h6>
+              </div>
+              {% for list in list %}
+                <!-- Single Latest Posts -->
+                <div class="single-latest-post d-flex">
+                  <div class="post-thumb">
+                    <img src="{{ list.banner_photo.url }}" alt="">
+                  </div>
+                  <div class="post-content">
+                    <a href="{% url 'coffee:post-detail' post.slug %}" class="post-title">
+                      <h6>{{ list.title }}</h6>
+                    </a>
+                    <a href="#" class="post-author"><span>by</span> {{ user.username }}</a>
+                  </div>
+                </div>
+              {% endfor%}
+
+            <!-- ##### Single Widget Area ##### -->
+            <div class="single-widget-area">
+              <!-- Adds -->
+              <a href="#"><img src="img/blog-img/add.png" alt=""></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ##### Blog Content Area End ##### -->
+
+{% endblock %}
+
+

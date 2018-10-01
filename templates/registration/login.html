@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+
+<section class="blog-content-area section-padding-0-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- Blog Posts Area -->
+      <div class="col-12 col-lg-8">
+        <div class="blog-posts-area">
+          <!-- Leave A Comment -->
+          <div class="leave-comment-area clearfix">
+            <div class="comment-form">
+              <h4 class="headline">Login</h4>
+
+              <!-- Comment Form -->
+                <form method="post" action="{% url 'login' %}">
+                  {% csrf_token %}
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <td>{{ form.username.label_tag }}</td>
+                      <td>{{ form.username }}</td>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <td>{{ form.password.label_tag }}</td>
+                      <td>{{ form.password }}</td>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <input type="submit" value="login" class="btn foode-btn"/>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <section class="blog-content-area section-padding-0-100">
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- Blog Posts Area -->
+        <div class="col-12 col-lg-8">
+          <div class="blog-posts-area">
+            <!-- Leave A Comment -->
+            <div class="leave-comment-area clearfix">
+              <div class="comment-form">
+                <h4 class="headline">New comment</h4>
+
+                <!-- Comment Form -->
+                  <form method="post" id="form" action="" enctype="multipart/form-data" class="infotabs accfrm">
+                    {% csrf_token %}
+                  <div class="row">
+                    <div class="col-12 col-md-6">
+                      <div class="form-group">
+                          {{ form.text }}
+                      </div>
+                    </div>
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn foode-btn">Post</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

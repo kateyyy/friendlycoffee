@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="blog-content-area section-padding-0-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- Blog Posts Area -->
+      <div class="col-12 col-lg-8">
+        <div class="blog-posts-area">
+          <!-- Leave A Comment -->
+          <div class="leave-comment-area clearfix">
+            <div class="comment-form">
+              <h4 class="headline">Register</h4>
+
+              <!-- Comment Form -->
+                <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <td>{{ user_form.username.label_tag }}</td>
+                      <td>{{ user_form.username }}</td>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <td>{{ user_form.email.label_tag }}</td>
+                      <td>{{ user_form.email }}</td>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <td>{{ user_form.password1.label_tag }}</td>
+                      <td>{{ user_form.password1 }}</td>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <td>{{ user_form.password2.label_tag }}</td>
+                      <td>{{ user_form.password2 }}</td>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn foode-btn">Save</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<br>
+<br>
+<br>
+<br>
+  <form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ user_form.as_p }}
+  <button type="submit">Save</button>
+</form>
+{% endblock %}
+
+

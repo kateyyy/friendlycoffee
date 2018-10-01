@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+  <!-- ##### Hero Area Start ##### -->
+    <section class="hero-area">
+      <div class="hero-post-slides owl-carousel">
+
+        {% for home in home %}
+          <!-- Single Hero Post -->
+          <div class="single-hero-post">
+            <!-- Post Image -->
+            <div class="slide-img bg-img" style="background-image: url({{ home.banner_photo.url }});"></div>
+            <!-- Post Content -->
+            <div class="hero-slides-content">
+              <p>{{ home.date_created }}</p>
+              <a href="{% url 'coffee:post-detail' home.slug %}" class="post-title">
+                  <h4>{{ home.title }}</h4>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+
+      </div>
+    </section>
+    <!-- ##### Hero Area End ##### -->
+
+    <!-- ##### Blog Content Area Start ##### -->
+    <section class="blog-content-area section-padding-100">
+      <div class="container">
+        <div class="row">
+
+        <div class="row justify-content-center">
+          <!-- Blog Posts Area -->
+          <div class="col-12 col-lg-8">
+            <div class="blog-posts-area">
+
+              {% for post in post %}
+                <!-- Single Blog Post -->
+                <div class="single-blog-post d-flex flex-wrap mt-50">
+                  <!-- Thumbnail -->
+                  <div class="post-thumbnail mb-50">
+                    <a href="#"><img src="{{ post.banner_photo.url }}" alt=""></a>
+                  </div>
+                  <!-- Content -->
+                  <div class="post-content mb-50">
+                    <p class="post-date">{{ post.date_created }}</p>
+                    <a href="{% url 'coffee:post-detail' post.slug %}" class="post-title">
+                        <h4>{{ post.title }}</h4>
+                    </a>
+                    <div class="post-meta">
+                        <span>by</span> {{ user.username }}
+                    </div>
+                    <p class="post-excerpt">{{ post.body }}</p>
+                    <a href="{% url 'coffee:post-detail' post.slug %}" class="read-more-btn">Continue Reading <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                  </div>
+                  <!-- Post Curve Line -->
+                  <img class="post-curve-line" src="{% static 'img/core-img/post-curve-line.png' %}" alt="">
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ##### Instagram Area Start ##### -->
+    <div class="follow-us-instagram">
+      <div class="container">
+        <div class="row">
+            <div class="col-12">
+              <div class="section-heading">
+                <h2>Follow Us On Instagram</h2>
+                <span>@FriendlyCoffee</span>
+              </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="instagram-slides owl-carousel">
+                  {% for home in home %}
+                    <!-- Single Instagram Slide -->
+                    <div class="single-instagram-slide">
+                      <img src="{{ home.banner_photo.url }}" alt="">
+                      <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
+                    </div>
+                  {% endfor %}
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- ##### Instagram Area End ##### -->
+
+{% endblock content %}

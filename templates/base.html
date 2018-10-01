@@ -1,0 +1,108 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Friendly Coffee</title>
+
+    {% include 'snippets/css.html' %}
+  </head>
+
+  <body>
+    
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+      <!-- Logo Area -->
+      <div class="logo-area text-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <!-- Nav brand -->
+              <a href="index.html" class="nav-brand"><img src="{% static 'img/core-img/logo1.jpg' %}" alt=""></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navbar Area -->
+      <div class="foode-main-menu">
+        <div class="classy-nav-container breakpoint-off">
+          <div class="container">
+            <!-- Menu -->
+            <nav class="classy-navbar" id="foodeNav">
+
+              <!-- Nav brand -->
+              <a href="index.html" class="nav-brand"><img src="{% static 'img/core-img/logo1.jpg' %}" alt=""></a>
+
+              <!-- Navbar Toggler -->
+              <div class="classy-navbar-toggler">
+                <span class="navbarToggler"><span></span><span></span><span></span></span>
+              </div>
+
+              <!-- Menu -->
+              <div class="classy-menu">
+                <!-- close btn -->
+                <div class="classycloseIcon">
+                  <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                </div>
+
+                  <!-- Nav Start -->
+                <div class="classynav">
+                  <ul>
+                    <li><a href="{% url 'coffee:home' %}">Home</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'coffee:post-create' %}">Post</a></li>
+                        <li><a href="#">Account</a>
+                        <ul class="dropdown">
+                          <li><a href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                      </li>
+                    {% else %}
+                      <li><a href="{% url 'login' %}">login</a></li>
+                      <li><a href="{% url 'register' %}">Register</a></li>
+                      
+                    {% endif %}
+                  </ul>
+                </div>
+                <!-- Nav End -->
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    {% block content %}{% endblock content %}
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <!-- Footer Curve Line -->
+            <img class="footer-curve" src="{% static 'img/core-img/foo-curve.png' %}" alt="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="copywrite-text">
+              <p>
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ##### Footer Area Start ##### -->
+    {% include 'snippets/js.html' %}
+  </body>
+</html>
