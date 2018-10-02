@@ -1,0 +1,86 @@
+[
+{
+    "model": "coffee.post",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "title": "Coffee",
+        "subtitle": "lami",
+        "banner_photo": "media/1.jpg",
+        "body": "this is the body.",
+        "date_created": "2018-10-01T05:24:16.832Z",
+        "date_modified": "2018-10-01T21:06:24.760Z",
+        "slug": "coffee"
+    }
+},
+{
+    "model": "coffee.post",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "title": "Coffee1",
+        "subtitle": "sub",
+        "banner_photo": "media/13.jpg",
+        "body": "this is the body",
+        "date_created": "2018-10-01T05:28:01.679Z",
+        "date_modified": "2018-10-01T21:06:38.256Z",
+        "slug": "coffee1"
+    }
+},
+{
+    "model": "coffee.post",
+    "pk": 3,
+    "fields": {
+        "user": 1,
+        "title": "Coffee2",
+        "subtitle": "test",
+        "banner_photo": "media/8.jpg",
+        "body": "this is the body",
+        "date_created": "2018-10-01T05:37:59.978Z",
+        "date_modified": "2018-10-01T21:06:48.663Z",
+        "slug": "coffee2"
+    }
+},
+{
+    "model": "coffee.post",
+    "pk": 4,
+    "fields": {
+        "user": 1,
+        "title": "Coffee3",
+        "subtitle": "text",
+        "banner_photo": "media/1.jpg",
+        "body": "text",
+        "date_created": "2018-10-01T18:18:43.000Z",
+        "date_modified": "2018-10-01T18:18:43.000Z",
+        "slug": "coffee3"
+    }
+},
+{
+    "model": "coffee.post",
+    "pk": 5,
+    "fields": {
+        "user": 1,
+        "title": "Coffee3a",
+        "subtitle": "teasf",
+        "banner_photo": "media/10.jpg",
+        "body": "asfas",
+        "date_created": "2018-10-01T18:32:52.264Z",
+        "date_modified": "2018-10-01T21:07:06.048Z",
+        "slug": "coffee3a"
+    }
+},
+{
+    "model": "coffee.post",
+    "pk": 6,
+    "fields": {
+        "user": 4,
+        "title": "Coffee11",
+        "subtitle": "test",
+        "banner_photo": "media/20.jpg",
+        "body": "test",
+        "date_created": "2018-10-02T02:34:17.825Z",
+        "date_modified": "2018-10-02T02:34:17.825Z",
+        "slug": "coffee11"
+    }
+}
+]
